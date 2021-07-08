@@ -6,8 +6,8 @@ const { Schema } = mongoose;
 
 const personSchema= new Schema({
     name: {type: String, required:true},
-    age: {type: Number},
-    favouriteFoods:[{type: String}]
+    age: Number,
+    favoriteFoods:[String]
 })
 let Person = mongoose.model('Person', personSchema);
 
