@@ -1,5 +1,12 @@
-require('dotenv').config();
+require("dotenv").config();
+const { MongoClient } = require("mongodb");
+const uri =
+  "mongodb+srv://budash:LHirqXai454TPPsh@cluster0.7in9u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
+const client = new MongoClient(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 let Person;
 
