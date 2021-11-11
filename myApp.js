@@ -1,12 +1,23 @@
 require("dotenv").config();
-const { MongoClient } = require("mongodb");
-const uri =
-  "mongodb+srv://budash:LHirqXai454TPPsh@cluster0.7in9u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-
-const client = new MongoClient(uri, {
+const mongoose = require("mongoose");
+mongoose.connect(process.env["MONGO_URI"], {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+const Schema = mongoose.Schema;
+
+const personSchema = new Schema({
+  name: { type: String, required: true },
+  age: Number,
+  favoriteFoods: [String],
+});
+// const { MongoClient } = require("mongodb");
+// const uri = process.env["MONGO_URI"];
+
+// const client = new MongoClient(uri, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 let Person;
 
