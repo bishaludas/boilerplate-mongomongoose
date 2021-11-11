@@ -61,13 +61,13 @@ const findPersonById = (personId, done) => {
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
-
   Person.findById(personId, function (err, data) {
     if (err) return handleError(err);
-    console.log(data);
     data.favoriteFoods.push(foodToAdd);
-    data.save();
-    done(null, data);
+    data.save((err, data) => {
+      if (err) return console.error(err);
+      done(null, data);
+    })
   });
 
 };
