@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 
 mongoose.connect(process.env["MONGO_URI"], {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
 });
 
 const personSchema = new Schema({
@@ -16,13 +15,16 @@ const personSchema = new Schema({
 let Person = mongoose.model("Person", personSchema);
 
 const createAndSavePerson = (done) => {
-  Person.name = "Bishal";
-  Person.age = 26;
-  Person.favoriteFoods = ["momo", "chicken", "burgers"];
-  Person.save().then((data) => {
-    console.log(data);
+  var budash = new Person({
+    name: "Bishal Udash",
+    age: 84,
+    favoriteFoods: ["eggs", "fish", "fresh fruit"],
   });
-  done(null /*, data*/);
+
+  budash.save((err, data) => {
+    if (err) return console.error(err);
+    done(null, data);
+  });
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
